@@ -9,7 +9,7 @@ trigger:
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '4c8e7db9-7472-409e-8b5a-49c63cab73e1'
+  azureSubscription: '2312f0dc-5a96-40a3-94c2-289a74ba4bae'
   
   # Web app name
   webAppName: 'java-spring-boot'
@@ -32,17 +32,17 @@ stages:
       inputs:
         mavenPomFile: 'app/pom.xml'
 
-    - task: CopyFiles@2
-      displayName: 'Copy Files to artifact staging directory'
-      inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)'
-        Contents: '**/target/*.?(war|jar)'
-        TargetFolder: $(Build.ArtifactStagingDirectory)
+    # - task: CopyFiles@2
+    #   displayName: 'Copy Files to artifact staging directory'
+    #   inputs:
+    #     SourceFolder: '$(System.DefaultWorkingDirectory)'
+    #     Contents: '**/target/*.?(war|jar)'
+    #     TargetFolder: $(Build.ArtifactStagingDirectory)
 
-    - task: PublishPipelineArtifact@0
-      displayName: 'Publish pipeline artifacts'
-      inputs:
-        targetPath: $(Build.ArtifactStagingDirectory)
+    # - task: PublishPipelineArtifact@0
+    #   displayName: 'Publish pipeline artifacts'
+    #   inputs:
+    #     targetPath: $(Build.ArtifactStagingDirectory)
 
 # - stage: Deploy
 #   displayName: Deploy stage
